@@ -10,3 +10,49 @@ h3 {
 .container {
   vertical-align: middle;
 }
+
+.header {
+  grid-area: header;
+  justify-content: space-between;
+}
+
+.header-left {
+  align-content: start;
+  justify-content: left;
+}
+
+.header-right {
+  align-content: end;
+  justify-content: right;
+}
+
+.navbar {}
+
+.navbar-left {
+  align-content: start;
+  justify-content: left;
+}
+
+.navbar-center {
+  align-content: center;
+  justify-content: center;
+}
+
+.navbar-right {
+  align-content: end;
+  justify-content: right;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 260px 1fr 1fr 1fr;
+  grid-template-rows: 0.2fr 3fr;
+  grid-template-areas: 
+      'sidebar header header header'
+      'sidebar main main main';
+  height: 100vh;
+}
+
+.icon {
+  color: white;
+}
