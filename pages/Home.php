@@ -1,98 +1,86 @@
 <?php include("./Header.php") ?>
-    
-    <div class="container-fluid bg-light about py-5">
-        <div class="container">
-            <div class="section-title position-relative text-center mx-auto mb-5 pb-3" style="max-width: 100%;">
-                <h2 class="text-primary font-secondary">Medical Devices</h2>
-                <hr style="width:100%; height:4px">
-            </div>
 
-            <div class="row">
-                <div class="col-5 text-left">
-                    <a href="Home page.html">Home</a>
-                    <i class="far fa-square text-primary px-2"></i>
-                    <a href="hair.html">Medical Devices</a>
+    <div class="container-fluid bg-light">  
+        <div class="container py-5">
+            <div class="row justify-content-center"> 
+                <div class="col-lg-10 text-center text-lg-center"> 
+                    <h1 class="font-secondary text-primary mb-4">Welcome</h1>
+                    <h1 class="display-1 text-uppercase text-dark mb-4">Calisto Medilab</h1>
+                    <h2 class="text-uppercase text-dark">The Online Pharmaceutical shop</h2>      
+                </div>                 
+            </div>    
+        </div>
+    </div>
+
+    <div class="container-fluid bg-light">  
+        <div class="container py-5">
+            <div class="row g-5 justify-content-start">         
+                <div class="col-lg-6"> 
+                    <div class="bg-primary border-inner text-center text-white p-5">
+                        <a href="Menu.html"><h4 class="text-uppercase mb-3">Pills</h4>
+                            <img src="img/bun.jpg" class="rounded-circle" style="width:200px; height:100px;">
+                        </a>                        
+                    </div>
+                </div>
+                <div class="col-lg-6"> 
+                    <div class="bg-primary border-inner text-center text-white p-5 rounded-2">
+                        <a href="Menu.html"><h4 class="text-uppercase mb-3">Syrups</h4>
+                            <img src="img/pastry.jpg" class="rounded-circle" style="width:200px; height:100px;">
+                        </a>                       
+                    </div>
+                </div>
+                <div class="col-lg-12 text-center">
+                    <h1 class="text-uppercase text-dark mb-4">Submit your prescription</h1>
+                    <a href="Menu.html" class="btn btn-primary py-3 px-5">Submit</a>
                 </div>
             </div>
-
-            <div class="tab-class text-center">
-                <div class="tab-content">
-                    <div id="tab-1" class="tab-pane fade show p-0 active">
-                        <div class="row g-5">
-                            <div class="col-lg-6">
-                                <div class="d h-100">
-                                    <div class="flex-shrink-0">
-                                        <img class="img-fluid" src="img/devices/a.jpg" alt="" style="width: 450px; height: 385px;">
-                                        <h4 class="bg-dark text-light p-2 m-0">Rs.75580.00</h4>
-                                    
-                                    </div>
-                                    <div class="d-flex flex-column justify-content-center text-start bg-secondary border-inner px-4">
-                                       <p></p> <span>WELCH ALLYN PRO BP 3400 DIGITAL BP DEVICE</span>
-                                    </div>
+        </div>
+    </div>  
+    
+    <div class="container-fluid mb-3">
+        <div class="row px-xl-5">
+            <div class="col-lg-12">
+                <div id="header-carousel" class="carousel slide carousel-fade mb-30 mb-lg-0" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#header-carousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#header-carousel" data-slide-to="1"></li>
+                        <li data-target="#header-carousel" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="carousel-item position-relative active" style="height: 430px;">
+                            <img class="position-absolute w-100 h-100" src="img/about.jpg" style="object-fit: cover;">
+                            <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                                <div class="p-3" style="max-width: 700px;">
+                                    <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Calisto Medilab</h1>                                    
+                                    <p class="mx-md-5 px-5 animate__animated animate__bounceIn">Calisto Medilab was established in 2019 as a sole Proprietor business entity by our Late founder Mr. John Calisto.</p>                                    
                                 </div>
                             </div>
-                            <div class="col-lg-6">
-                                <div class="d h-100">
-                                    <div class="flex-shrink-0">
-                                        <img class="img-fluid" src="img/devices/b.jpg" alt="" style="width: 450px; height: 385px;">
-                                        <h4 class="bg-dark text-light p-2 m-0">Rs.155640.00</h4>
-                                    </div>
-                                    <div class="d-flex flex-column justify-content-center text-start bg-secondary border-inner px-10">
-                                        <p></p><span>WELCH ALLYN SPOT VITAL SIGNS 4400 DEVICE</span></p>
-                                    </div>
+                        </div>
+                        <div class="carousel-item position-relative" style="height: 430px;">
+                            <img class="position-absolute w-100 h-100" src="img/contact.jpg" style="object-fit: cover;">
+                            <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                                <div class="p-3" style="max-width: 700px;">
+                                    <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Online Pharmaceutical shop</h1>
+                                    <p class="mx-md-5 px-5 animate__animated animate__bounceIn">Calisto Medilab has served the nation for Over 3 Generations, with 7 outlets. Prescription Medication, 
+                                        Preparation mixing local Applications, supplying of Wheelchairs, Orthopaedic supports, Home and professional medical Care equipment, Surgical consumable.</p>                                    
                                 </div>
                             </div>
-                            <div class="col-lg-6">
-                                <div class="d h-100">
-                                    <div class="flex-shrink-0">
-                                        <img class="img-fluid" src="img/devices/c.jpg" alt="" style="width: 450px; height: 385px;">
-                                        <h4 class="bg-dark text-light p-2 m-0">Rs.6480.00</h4>
-                                    </div>
-                                    <div class="d-flex flex-column justify-content-center text-start bg-secondary border-inner px-10">
-                                        <p></p><span>GLOBAL DIAGNOSTIC WEARABLE MEDICAL DEVICE</span></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="d h-100">
-                                    <div class="flex-shrink-0">
-                                        <img class="img-fluid" src="img/devices/d.jpg" alt="" style="width: 450px; height: 385px;">
-                                        <h4 class="bg-dark text-light p-2 m-0">Rs.8380.00</h4>
-                                    </div>
-                                    <div class="d-flex flex-column justify-content-center text-start bg-secondary border-inner px-10">
-                                        <p></p><span>ACCU-CHEK ACTIVE BLOOD GLUCOSE METER</span></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="d h-100">
-                                    <div class="flex-shrink-0">
-                                        <img class="img-fluid" src="img/devices/e.jpg" alt="" style="width: 450px; height: 385px;">
-                                        <h4 class="bg-dark text-light p-2 m-0">Rs.16640.00</h4>
-                                    </div>
-                                    <div class="d-flex flex-column justify-content-center text-start bg-secondary border-inner px-10">
-                                        <p></p><span>Rossmax Handheld Pulse Oximeter SA120</span></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="d h-100">
-                                    <div class="flex-shrink-0">
-                                        <img class="img-fluid" src="img/devices/f.jpg" alt="" style="width: 450px; height: 385px;">
-                                        <h4 class="bg-dark text-light p-2 m-0">Rs.40580.00</h4>
-                                    </div>
-                                    <div class="d-flex flex-column justify-content-center text-start bg-secondary border-inner px-10">
-                                        <p></p><span>Rossmax V3 Suction Unit</span></p>
-                                    </div>
+                        </div>
+                        <div class="carousel-item position-relative" style="height: 430px;">
+                            <img class="position-absolute w-100 h-100" src="img/contact.jpg" style="object-fit: cover;">
+                            <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                                <div class="p-3" style="max-width: 700px;">
+                                    <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Fast Delivery</h1>
+                                    <p class="mx-md-5 px-5 animate__animated animate__bounceIn">We will send your orders through our experience qualified dispenser to your doorstep. </p>                                    
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>            
         </div>
     </div>
-    <br><br><br>
+    
 
 <?php include("./Footer.php") ?>
 
