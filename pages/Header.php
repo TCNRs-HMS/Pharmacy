@@ -21,8 +21,9 @@
                 <h1 class="text-uppercase text-light"><i class="fa fa-medkit text-light"></i>&nbsp;Calisto Medilab</h2>
             </div>
             <div class="col-lg-1 text-center">
+                <a href="Account.php">
                 <i class="fa fa-user fs-3"></i><br>
-                <span class="text-light">Account</span>
+                <span class="text-light">Account</span></a>
             </div>
             <div class="col-lg-1 text-center">
                 <i class="fa fa-shopping-cart fs-3"></i><br>
