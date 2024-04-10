@@ -51,11 +51,11 @@
             </ul>          
         <ul class="navbar-nav mx-auto">
             <li><a href="#" class="nav-item nav-link active">Home</a></li>
-            <li><a href="/pages/Menu.php" class="nav-item nav-link">Menu</a></li>
-            <li><a href="/pages/Service.php" class="nav-item nav-link">Our Services</a></li>
-            <li><a href="/pages/Contact.php" class="nav-item nav-link">Contact Us</a></li>
-            <li><a href="/pages/About.php" class="nav-item nav-link">About Us</a></li>
-            <li><a href="/pages/Testimonial.php" class="nav-item nav-link">Testimonial</a></li>
+            <li><a href="Menu.php" class="nav-item nav-link">Menu</a></li>
+            <li><a href="Service.php" class="nav-item nav-link">Our Services</a></li>
+            <li><a href="Contact.php" class="nav-item nav-link">Contact Us</a></li>
+            <li><a href="About.php" class="nav-item nav-link">About Us</a></li>
+            <li><a href="Testimonial.php" class="nav-item nav-link">Testimonial</a></li>
          </ul>        
         <div class="">
             <form>

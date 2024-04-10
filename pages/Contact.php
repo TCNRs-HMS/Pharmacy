@@ -61,7 +61,7 @@
             </div>
             <div class="col-lg-7 text-center">
                 <div class="bg-primary p-3">
-                    <img src="/img/location.png" height="410" class="w-100" alt="location">
+                    <img src="img/location.png" height="410" class="w-100" alt="location">
                 </div>
             </div>
         </div><br><br>

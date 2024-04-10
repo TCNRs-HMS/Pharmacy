@@ -1,11 +1,11 @@
 <?php include("./Header.php") ?>
 
-    <div class="container-fluid bg-light">  
+    <div class="container-fluid pb-5">  
         <div class="container py-5">
             <div class="row justify-content-center"> 
                 <div class="col-lg-10 text-center text-lg-center"> 
                     <h1 class="font-secondary text-primary mb-4">Welcome</h1>
-                    <h1 class="display-1 text-uppercase text-dark mb-4">Calisto Medilab</h1>
+                    <h1 class="display-2 text-uppercase text-dark font-weight-semi-bold mb-4">Calisto Medilab</h1>
                     <h2 class="text-uppercase text-dark">The Online Pharmaceutical shop</h2>      
                 </div>                 
             </div>    
@@ -17,25 +17,73 @@
             <div class="row g-5 justify-content-start">         
                 <div class="col-lg-6"> 
                     <div class="bg-primary border-inner text-center text-white p-5">
-                        <a href="Menu.html"><h4 class="text-uppercase mb-3">Pills</h4>
-                            <img src="img/bun.jpg" class="rounded-circle" style="width:200px; height:100px;">
+                        <a href="Menu.php"><h4 class="text-uppercase mb-3">Pills</h4>
+                            <img src="img/pills.jpg" class="rounded-circle" style="width:200px; height:100px;">
                         </a>                        
                     </div>
                 </div>
                 <div class="col-lg-6"> 
                     <div class="bg-primary border-inner text-center text-white p-5 rounded-2">
-                        <a href="Menu.html"><h4 class="text-uppercase mb-3">Syrups</h4>
-                            <img src="img/pastry.jpg" class="rounded-circle" style="width:200px; height:100px;">
+                        <a href="Menu.php"><h4 class="text-uppercase mb-3">Syrups</h4>
+                            <img src="img/syrup.jpg" class="rounded-circle" style="width:200px; height:100px;">
                         </a>                       
                     </div>
                 </div>
                 <div class="col-lg-12 text-center">
-                    <h1 class="text-uppercase text-dark mb-4">Submit your prescription</h1>
-                    <a href="Menu.html" class="btn btn-primary py-3 px-5">Submit</a>
+                    <h2 class="text-uppercase text-dark mb-4">Submit your prescription</h2>
+                    <a href="Menu.php" class="btn btn-primary py-3 px-5 shadow-sm rounded" style="width:40%;"><b>Submit</b></a>
                 </div>
             </div>
         </div>
     </div>  
+
+    <div class="container-fluid bg-light pt-5">
+        <div class="row px-xl-4 pb-3">
+            <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+                <div class="d-flex align-items-center shadow-sm bg-white rounded mb-4" style="padding: 30px;">
+                    <h1 class="fa fa-check text-primary m-0 mr-3"></h1>
+                    <h5 class="font-weight-semi-bold m-0 ps-3">Quality Products</h5>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+                <div class="d-flex align-items-center shadow-sm bg-white rounded mb-4" style="padding: 30px;">
+                    <h1 class="fa fa-shipping-fast text-primary m-0 mr-2"></h1>
+                    <h5 class="font-weight-semi-bold m-0 ps-4">Free Delivery</h5>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+                <div class="d-flex align-items-center shadow-sm bg-white rounded mb-4" style="padding: 30px;">
+                    <h1 class="fas fa-exchange-alt text-primary m-0 mr-3"></h1>
+                    <h5 class="font-weight-semi-bold m-0 ps-4">14-Day Return</h5>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+                <div class="d-flex align-items-center shadow-sm bg-white rounded mb-4" style="padding: 30px;">
+                    <h1 class="fa fa-phone-volume text-primary m-0 mr-3"></h1>
+                    <h5 class="font-weight-semi-bold m-0 ps-3">24x7 Service</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid bg-light pt-5">
+        <h2 class="text-dark text-uppercase pr-3 text-center">Categories</h2>
+        <div class="row px-xl-5 pb-3">                
+            <div class="col-lg-3 col-md-4 col-sm-6 pb-1 pt-3 shadow-sm bg-white rounded">
+                <a class="text-decoration-none" href="">
+                    <div class="cat-item d-flex align-items-center mb-4">
+                        <div class="overflow-hidden" style="width: 100px; height: 100px;">
+                            <img style="width: 150px;" src="" alt="">                                     
+                        </div>
+                        <div class="flex-fill pl-3">
+                            <h5>Vitamin & Suppliments</h5>
+                            <small class="text-body">100 Products</small>
+                        </div>
+                    </div>
+                </a>
+            </div>            
+        </div>
+    </div>
     
     <div class="container-fluid mb-3">
         <div class="row px-xl-5">
@@ -48,7 +96,7 @@
                     </ol>
                     <div class="carousel-inner">
                         <div class="carousel-item position-relative active" style="height: 430px;">
-                            <img class="position-absolute w-100 h-100" src="img/about.jpg" style="object-fit: cover;">
+                            <img class="position-absolute w-100 h-100" src="img/service.jpg" style="object-fit: cover;">
                             <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                                 <div class="p-3" style="max-width: 700px;">
                                     <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Calisto Medilab</h1>                                    

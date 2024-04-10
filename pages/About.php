@@ -78,7 +78,7 @@
     <div class="container-fluid bg-light pt-5">
         <div class="row mx-5">
             <div class="col-lg-6 text-center text-dark">
-                <img src="service.jpg" height="410" class="w-100" alt="about">
+                <img src="img/about.jpg" height="410" class="w-100" alt="about">
             </div><br> 
             <div class="col-lg-6 text-center text-dark">
                 <h5 class="text-justify">
