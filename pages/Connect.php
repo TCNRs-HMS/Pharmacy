@@ -1,12 +1,12 @@
 <?php 
-    $servername = "localhost";
-    $username = "root";
-    $password = "root";
-    $db_name = "calisto_pharmacy";
+    $conn = mysqli_connect('localhost', 'root');
 
-    $conn = new mysqli($servername, $username, $password, $db_name, 3307);
     if($conn->connect_error) {
-        die("Connection failed".$conn->connect_error);
+        die("Connection Failed!".$conn->connect_error);
+    } 
+    else {
+        // echo "Connection Successful!";
     }
-    echo "Connection successful!";
+    
+    mysqli_select_db($conn, 'calisto_pharmacy');
 ?>

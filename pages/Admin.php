@@ -1,4 +1,42 @@
-<?php include("./Connect.php") ?>
+<?php 
+    $conn = mysqli_connect('localhost', 'root');
+
+    if($conn->connect_error) {
+        die("Connection Failed!".$conn->connect_error);
+    } 
+    else {
+        // echo "Connection Successful!";
+    }
+    
+    mysqli_select_db($conn, 'calisto_pharmacy');
+
+    if(isset($_POST['submit'])){
+        $id = $_POST['id'];
+        $name = $_POST['name'];
+        $description = $_POST['description'];
+        $price = $_POST['price'];
+        $image = $_POST['image'];
+
+        $filename = $_FILES["image"]["name"];
+        $tempname = $_FILES["image"]["tmp_name"];  
+        $folder = "img/".$filename;   
+
+        if (move_uploaded_file($tempname, $folder)) {
+            $msg = "Image uploaded successfully";
+        }else{
+            $msg = "Failed to upload image";
+        }
+
+        $query = "INSERT INTO products (Id, Name, Description, Price, Image) VALUES ('$id', '$name', '$description', '$price', '$image')";
+
+        mysqli_query($conn, $query);
+        header('location:Success.php');
+    }
+    else {
+		echo 'Insertion failed!';
+	}
+    
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -33,8 +71,8 @@
                                 <input type="text" class="form-control" id="name" name="name" />
                             </div>
                             <div class="form-group pb-2">
-                                <label class="form-label" for="descrption">Description</label>
-                                <input type="text" class="form-control" id="descrption" name="descrption" />
+                                <label class="form-label" for="description">Description</label>
+                                <input type="text" class="form-control" id="description" name="description" />
                             </div>
                             <div class="form-group pb-2">
                                 <label class="form-label" for="price">Price</label>
@@ -44,7 +82,7 @@
                                 <label class="form-label" for="image">Image</label>
                                 <input type="file" class="form-control" id="image" name="image">
                             </div>
-                            <button type="submit" class="btn btn-primary" style="width: 100%;">Submit</button>
+                            <button type="submit" class="btn btn-primary" name="submit" style="width: 100%;">Submit</button>
                         </form>
                     </div>
                 </div>
