@@ -67,23 +67,45 @@
     </div>
 
     <div class="container-fluid bg-light pt-5">
-        <h2 class="text-dark text-uppercase pr-3 text-center">Categories</h2>
-        <div class="row px-xl-5 pb-3">                
-            <div class="col-lg-3 col-md-4 col-sm-6 pb-1 pt-3 shadow-sm bg-white rounded">
-                <a class="text-decoration-none" href="">
-                    <div class="cat-item d-flex align-items-center mb-4">
-                        <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                            <img style="width: 150px;" src="" alt="">                                     
-                        </div>
-                        <div class="flex-fill pl-3">
-                            <h5>Vitamin & Suppliments</h5>
-                            <small class="text-body">100 Products</small>
-                        </div>
+    <h2 class="text-dark text-uppercase pr-3 text-center">Categories</h2>
+    <div class="row px-xl-5 pb-3">  
+
+        <?php
+        include("Connect.php");
+
+        // Query to select all products
+        $query = "SELECT * FROM products";
+        $result = mysqli_query($conn, $query);
+
+        // Loop through each row of the result
+        while ($row = mysqli_fetch_assoc($result)) {
+            $id = $row['Id'];
+            $name = $row['Name'];
+            $description = $row['Description'];
+            $price = $row['Price'];
+            $image = $row['Image'];
+        ?>
+
+        <div class="col-lg-3 col-md-4 col-sm-6 pb-1 pt-3 shadow-sm bg-white rounded">
+            <a class="text-decoration-none" href="">
+                <div class="cat-item d-flex align-items-center mb-4">
+                    <div class="overflow-hidden" style="width: 100px; height: 100px;">
+                        <img style="width: 100%;" src="<?php echo $image; ?>" alt="<?php echo $name; ?>">
                     </div>
-                </a>
-            </div>            
+                    <div class="flex-fill pl-3">
+                        <h5><?php echo $name; ?></h5>
+                        <p><?php echo $description; ?></p>
+                        <p><strong>Price:</strong> $<?php echo $price; ?></p>
+                    </div>
+                </div>
+            </a>
         </div>
+
+        <?php } ?>
+
     </div>
+</div>
+
     
     <div class="container-fluid mb-3">
         <div class="row px-xl-5">

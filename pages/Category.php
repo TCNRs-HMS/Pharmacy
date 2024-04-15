@@ -14,7 +14,6 @@
         $id = $_POST['id'];
         $name = $_POST['name'];
         $description = $_POST['description'];
-        $price = $_POST['price'];
         $image = $_POST['image'];
 
         $filename = $_FILES["image"]["name"];
@@ -27,7 +26,7 @@
             $msg = "Failed to upload image";
         }
 
-        $query = "INSERT INTO products (Id, Name, Description, Price, Image) VALUES ('$id', '$name', '$description', '$price', '$image')";
+        $query = "INSERT INTO categories (Id, Name, Description, Image) VALUES ('$id', '$name', '$description', '$image')";
 
         mysqli_query($conn, $query);
         header('location:Home.php');
@@ -57,10 +56,10 @@
             <div class="col-lg-8">
             <div class="card">
                     <div class="card-header bg-primary h4 text-light text-center">
-                        Inventory Form
+                        Category Form
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title text-center">Add your Products</h5>
+                        <h5 class="card-title text-center">Add your Categories</h5>
                         <form action="" method="post">
                             <div class="form-group pb-2">
                                 <label class="form-label" for="id">Id</label>
@@ -73,10 +72,6 @@
                             <div class="form-group pb-2">
                                 <label class="form-label" for="description">Description</label>
                                 <input type="text" class="form-control" id="description" name="description" />
-                            </div>
-                            <div class="form-group pb-2">
-                                <label class="form-label" for="price">Price</label>
-                                <input type="text" class="form-control" id="price" name="price" />
                             </div>
                             <div class="form-group pb-2">                                
                                 <label class="form-label" for="image">Image</label>
