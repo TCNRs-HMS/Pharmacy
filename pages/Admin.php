@@ -30,7 +30,7 @@
         $query = "INSERT INTO products (Id, Name, Description, Price, Image) VALUES ('$id', '$name', '$description', '$price', '$image')";
 
         mysqli_query($conn, $query);
-        header('location:Home.php');
+        header('location:Category.php');
     }
     else {
 		echo 'Insertion failed!';
