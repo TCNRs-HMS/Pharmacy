@@ -1,16 +1,17 @@
 <?php 
     include("Connect.php");
 
-    if (isset($_POST['submit'])){
+    if(isset($_POST['submit'])){
         $id = $_POST['id'];
         $name = $_POST['name'];
         $description = $_POST['description'];
-        
-        $filename = $_FILES['image']['name'];
-        $tempname = $_FILES['image']['tmp_name'];  
-        $folder = "images/Categories/".$filename;  
+        $price = $_POST['price'];
 
-        $query = "INSERT INTO categories (Id, Name, Description, Image) VALUES ('$id', '$name', '$description', '$filename')";
+        $filename = $_FILES["image"]["name"];
+        $tempname = $_FILES["image"]["tmp_name"];  
+        $folder = "images/".$filename;   
+
+        $query = "INSERT INTO products (Id, Name, Description, Price, Image) VALUES ('$id', '$name', '$description', '$price', '$filename')";
 
         if (move_uploaded_file($tempname, $folder)) {
             $msg = "Image uploaded successfully";
@@ -19,8 +20,11 @@
         }
 
         mysqli_query($conn, $query);
-        header('location:Home.php');
+        // header('location: Home.php');
     } 
+    // else {
+    //     echo 'Insertion failed!';
+    // }
 ?>
 
 
@@ -43,10 +47,10 @@
             <div class="col-lg-8">
             <div class="card">
                     <div class="card-header bg-primary h4 text-light text-center">
-                        Category Form
+                        Inventory Form
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title text-center">Add your Categories</h5>
+                        <h5 class="card-title text-center">Add your Products</h5>
                         <form action="" method="post" enctype="multipart/form-data">
                             <div class="form-group pb-2">
                                 <label class="form-label" for="id">Id</label>
@@ -60,9 +64,13 @@
                                 <label class="form-label" for="description">Description</label>
                                 <input type="text" class="form-control" id="description" name="description" />
                             </div>
+                            <div class="form-group pb-2">
+                                <label class="form-label" for="price">Price</label>
+                                <input type="text" class="form-control" id="price" name="price" />
+                            </div>
                             <div class="form-group pb-2">                                
                                 <label class="form-label" for="image">Image</label>
-                                <input type="file" class="form-control" id="image" name="image" />
+                                <input type="file" class="form-control" id="image" name="image">
                             </div>
                             <button type="submit" class="btn btn-primary" name="submit" style="width: 100%;">Submit</button>
                         </form>

@@ -18,14 +18,14 @@
                 <div class="col-lg-6"> 
                     <div class="bg-primary border-inner text-center text-white p-5">
                         <a href="Menu.php"><h4 class="text-uppercase mb-3">Pills</h4>
-                            <img src="img/pills.jpg" class="rounded-circle" style="width:200px; height:100px;">
+                            <img src="http://localhost/Pharmacy-Website/images/pills.jpg" class="rounded-circle" style="width:200px; height:100px;">
                         </a>                        
                     </div>
                 </div>
                 <div class="col-lg-6"> 
                     <div class="bg-primary border-inner text-center text-white p-5 rounded-2">
                         <a href="Menu.php"><h4 class="text-uppercase mb-3">Syrups</h4>
-                            <img src="img/syrup.jpg" class="rounded-circle" style="width:200px; height:100px;">
+                            <img src="http://localhost/Pharmacy-Website/images/syrup.jpg" class="rounded-circle" style="width:200px; height:100px;">
                         </a>                       
                     </div>
                 </div>
@@ -67,7 +67,7 @@
     </div>
     
     <div class="container-fluid bg-light pt-5">
-        <h2 class="text-dark text-uppercase pr-3 text-center">Categories</h2>
+        <h2 class="text-dark text-uppercase pr-3 pb-3 text-center">Categories</h2>
         <div class="row px-xl-5 pb-3">  
 
             <?php 
@@ -81,21 +81,35 @@
                     $name = $row['Name'];
                     $description = $row['Description'];
                     $image = $row['Image'];
-
             ?>        
-            <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-                <a class="text-decoration-none" href="">
-                    <div class="d-flex align-items-center shadow-sm bg-white rounded mb-4" style="padding: 30px;">
+            <!-- <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+                <a class="text-decoration-none" href="#">
+                    <div class="cat-item d-flex align-items-center shadow-sm bg-white rounded mb-4" style="padding: 30px;">
                         <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                            <img style="width: 100%;" src="<?php echo $image; ?>" alt="<?php echo $name; ?>">
+                            <img class="img-fluid" style="width: 100%;" src="http://localhost/Pharmacy-Website/images/Categories/<?php echo $row['Image'] ?>" alt="<?php echo $name; ?>"> 
                         </div>
                         
                         <div class="flex-fill pl-3">
-                            <h6><?php echo $name; ?></h6>                               
+                            <h6><?php echo $name; ?></h6>   
+                            <small class="text-body">100 Products</small>                            
                         </div>
                     </div>
                 </a>
-            </div>                
+            </div>       -->
+            
+            <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+                <a class="text-decoration-none" href="#">
+                    <div class="shadow-sm bg-white rounded mb-4 p-2">
+                        <div class="overflow-hidden" style="width: 100%; height: 150px;">
+                            <img class="img-fluid rounded" style="width: 100%; height: 150px;" src="http://localhost/Pharmacy-Website/images/Categories/<?php echo $row['Image'] ?>" alt="<?php echo $name; ?>"> 
+                        </div>                        
+                        <div class="flex-fill pl-3 text-center">
+                            <h5><?php echo $name; ?></h5>   
+                            <small class="text-body">100 Products</small>                            
+                        </div>
+                    </div>
+                </a>
+            </div> 
 
             <?php } ?>
 

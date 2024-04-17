@@ -1,42 +1,32 @@
 <?php 
-    $conn = mysqli_connect('localhost', 'root');
-
-    if($conn->connect_error) {
-        die("Connection Failed!".$conn->connect_error);
-    } 
-    else {
-        // echo "Connection Successful!";
-    }
-    
-    mysqli_select_db($conn, 'calisto_pharmacy');
+    include("Connect.php");
 
     if(isset($_POST['submit'])){
         $id = $_POST['id'];
         $name = $_POST['name'];
         $description = $_POST['description'];
         $price = $_POST['price'];
-        $image = $_POST['image'];
 
         $filename = $_FILES["image"]["name"];
         $tempname = $_FILES["image"]["tmp_name"];  
-        $folder = "img/".$filename;   
+        $folder = "images/".$filename;   
+
+        $query = "INSERT INTO products (Id, Name, Description, Price, Image) VALUES ('$id', '$name', '$description', '$price', '$filename')";
 
         if (move_uploaded_file($tempname, $folder)) {
             $msg = "Image uploaded successfully";
-        }else{
+        } else {
             $msg = "Failed to upload image";
         }
 
-        $query = "INSERT INTO products (Id, Name, Description, Price, Image) VALUES ('$id', '$name', '$description', '$price', '$image')";
-
         mysqli_query($conn, $query);
-        header('location:Category.php');
-    }
-    else {
-		echo 'Insertion failed!';
-	}
-    
+        // header('location: Home.php');
+    } 
+    // else {
+    //     echo 'Insertion failed!';
+    // }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -52,42 +42,22 @@
 </head>
 <body>
     <div class="container">
-        <div class="row pt-5">
-            <div class="col-lg-2"></div>
-            <div class="col-lg-8">
-            <div class="card">
-                    <div class="card-header bg-primary h4 text-light text-center">
-                        Inventory Form
-                    </div>
+        <div class="row pt-5 text-center">
+            <h3>Admin Panel</h3>
+            <div class="col-lg-6 pt-5">
+                <a href="Product.php" class="text-decoration-none"><div class="card">
                     <div class="card-body">
-                        <h5 class="card-title text-center">Add your Products</h5>
-                        <form action="" method="post">
-                            <div class="form-group pb-2">
-                                <label class="form-label" for="id">Id</label>
-                                <input type="text" class="form-control" id="id" name="id" />
-                            </div>
-                            <div class="form-group pb-2">
-                                <label class="form-label" for="name">Name</label>
-                                <input type="text" class="form-control" id="name" name="name" />
-                            </div>
-                            <div class="form-group pb-2">
-                                <label class="form-label" for="description">Description</label>
-                                <input type="text" class="form-control" id="description" name="description" />
-                            </div>
-                            <div class="form-group pb-2">
-                                <label class="form-label" for="price">Price</label>
-                                <input type="text" class="form-control" id="price" name="price" />
-                            </div>
-                            <div class="form-group pb-2">                                
-                                <label class="form-label" for="image">Image</label>
-                                <input type="file" class="form-control" id="image" name="image">
-                            </div>
-                            <button type="submit" class="btn btn-primary" name="submit" style="width: 100%;">Submit</button>
-                        </form>
+                        <h5 class="card-title text-center ">Add your Products</h5>                        
                     </div>
-                </div>
+                </div></a>
             </div>
-            <div class="col-lg-2"></div>
+            <div class="col-lg-6 pt-5">
+                <a href="Category.php" class="text-decoration-none"><div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Add your Categories</h5>                        
+                    </div>
+                </div></a>
+            </div>            
         </div>
     </div>
     
