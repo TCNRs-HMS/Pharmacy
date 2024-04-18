@@ -5,7 +5,7 @@
     <div class="row px-xl-5 pb-3">  
 
         <?php
-        include("Connect.php");
+        include("admin/Connect.php");
 
         // Query to select all products
         $query = "SELECT * FROM products";

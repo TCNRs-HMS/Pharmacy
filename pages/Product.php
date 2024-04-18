@@ -1,32 +1,11 @@
-<?php 
-    include("Connect.php");
+<?php
 
-    if(isset($_POST['submit'])){
-        $id = $_POST['id'];
-        $name = $_POST['name'];
-        $description = $_POST['description'];
-        $price = $_POST['price'];
+    include("admin/Connect.php");
 
-        $filename = $_FILES["image"]["name"];
-        $tempname = $_FILES["image"]["tmp_name"];  
-        $folder = "images/".$filename;   
-
-        $query = "INSERT INTO products (Id, Name, Description, Price, Image) VALUES ('$id', '$name', '$description', '$price', '$filename')";
-
-        if (move_uploaded_file($tempname, $folder)) {
-            $msg = "Image uploaded successfully";
-        } else {
-            $msg = "Failed to upload image";
-        }
-
-        mysqli_query($conn, $query);
-        // header('location: Home.php');
-    } 
-    // else {
-    //     echo 'Insertion failed!';
-    // }
+    $query = "SELECT * FROM products";
+    $result = mysqli_query($conn, $query);
+       
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -41,43 +20,63 @@
     <title>Admin</title>
 </head>
 <body>
-    <div class="container">
-        <div class="row pt-5">
-            <div class="col-lg-2"></div>
-            <div class="col-lg-8">
-            <div class="card">
+<div class="container-fluid bg-primary p-3">
+        <div class="row px-3">
+            <div class="col-lg-10 d-flex align-items-center justify-content-start">
+                <h1 class="text-uppercase text-light"><i class="fa fa-medkit text-light"></i>&nbsp;Calisto Medilab</h2>
+            </div>
+            <div class="col-lg-2 d-flex align-items-center justify-content-end">
+                <i class="fa fa-user fs-3"></i><br>
+                <span class="text-light px-3">Admin</span>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark p-3 pb-3">                 
+        <ul class="navbar-nav mx-auto">
+            <li><a href="#" class="nav-item nav-link">Home</a></li>
+            <li><a href="Product.php" class="nav-item nav-link active">Products</a></li>
+            <li><a href="Category.php" class="nav-item nav-link">Categories</a></li>
+        </ul>  
+    </nav><br>
+    
+    <div class="container-fluid bg-light">
+        <h3 class="text-center mt-3">Products</h3>   
+        <div class="row">            
+            <div class="col mx-4 px-4">
+                <a href="admin/Add-Product.php" class="btn btn-primary">Add New Product</a>
+                <div class="card mt-4">
                     <div class="card-header bg-primary h4 text-light text-center">
-                        Inventory Form
+                        Products
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title text-center">Add your Products</h5>
-                        <form action="" method="post" enctype="multipart/form-data">
-                            <div class="form-group pb-2">
-                                <label class="form-label" for="id">Id</label>
-                                <input type="text" class="form-control" id="id" name="id" />
-                            </div>
-                            <div class="form-group pb-2">
-                                <label class="form-label" for="name">Name</label>
-                                <input type="text" class="form-control" id="name" name="name" />
-                            </div>
-                            <div class="form-group pb-2">
-                                <label class="form-label" for="description">Description</label>
-                                <input type="text" class="form-control" id="description" name="description" />
-                            </div>
-                            <div class="form-group pb-2">
-                                <label class="form-label" for="price">Price</label>
-                                <input type="text" class="form-control" id="price" name="price" />
-                            </div>
-                            <div class="form-group pb-2">                                
-                                <label class="form-label" for="image">Image</label>
-                                <input type="file" class="form-control" id="image" name="image">
-                            </div>
-                            <button type="submit" class="btn btn-primary" name="submit" style="width: 100%;">Submit</button>
-                        </form>
+                        <table class="table table-bordered text-center">
+                            <tr class="bg-dark text-white">
+                                <td>ID</td>
+                                <td>Name</td>
+                                <td>Description</td>
+                                <td>Price</td>
+                                <td>Image</td>
+                                <td>Edit</td>
+                                <td>Delete</td>
+                            </tr>
+                            <tr>
+                            <?php 
+                                    while ($row = mysqli_fetch_assoc($result)) {                                    
+                                ?>
+                                <td><?php echo $row['Id']; ?></td>
+                                <td><?php echo $row['Name']; ?></td>
+                                <td><?php echo $row['Description']; ?></td>
+                                <td><?php echo $row['Price']; ?></td>
+                                <td><img src="http://localhost/Pharmacy-Website/images/<?php echo $row['Image']; ?>" style="width: 25%;" height="50px" alt=""><?php echo $row['Image']; ?></td>                                
+                                <td><a href="#" class="btn btn-success">Edit</a></td>
+                                <td><a href="#" class="btn btn-danger">Delete</a></td>
+                            </tr>
+                            <?php } ?>
+                        </table>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-2"></div>
+            </div>            
         </div>
     </div>
     

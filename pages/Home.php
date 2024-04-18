@@ -71,7 +71,7 @@
         <div class="row px-xl-5 pb-3">  
 
             <?php 
-                include("Connect.php");
+                include("admin/Connect.php");
 
                 $query = "SELECT * FROM categories";
                 $result = mysqli_query($conn, $query);
