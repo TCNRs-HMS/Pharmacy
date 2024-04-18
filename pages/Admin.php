@@ -1,33 +1,3 @@
-<?php 
-    include("Connect.php");
-
-    if(isset($_POST['submit'])){
-        $id = $_POST['id'];
-        $name = $_POST['name'];
-        $description = $_POST['description'];
-        $price = $_POST['price'];
-
-        $filename = $_FILES["image"]["name"];
-        $tempname = $_FILES["image"]["tmp_name"];  
-        $folder = "images/".$filename;   
-
-        $query = "INSERT INTO products (Id, Name, Description, Price, Image) VALUES ('$id', '$name', '$description', '$price', '$filename')";
-
-        if (move_uploaded_file($tempname, $folder)) {
-            $msg = "Image uploaded successfully";
-        } else {
-            $msg = "Failed to upload image";
-        }
-
-        mysqli_query($conn, $query);
-        // header('location: Home.php');
-    } 
-    // else {
-    //     echo 'Insertion failed!';
-    // }
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,27 +8,49 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Oswald:wght@500;600;700&family=Pacifico&display=swap" rel="stylesheet"> 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-    <title>Admin</title>
+    <title>Admin Dashboard</title>
 </head>
 <body>
-    <div class="container">
-        <div class="row pt-5 text-center">
-            <h3>Admin Panel</h3>
-            <div class="col-lg-6 pt-5">
-                <a href="Product.php" class="text-decoration-none"><div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title text-center ">Add your Products</h5>                        
-                    </div>
-                </div></a>
+    <div class="container-fluid bg-primary p-3">
+        <div class="row px-3">
+            <div class="col-lg-10 d-flex align-items-center justify-content-start">
+                <h1 class="text-uppercase text-light"><i class="fa fa-medkit text-light"></i>&nbsp;Calisto Medilab</h2>
             </div>
-            <div class="col-lg-6 pt-5">
-                <a href="Category.php" class="text-decoration-none"><div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">Add your Categories</h5>                        
-                    </div>
-                </div></a>
-            </div>            
+            <div class="col-lg-2 d-flex align-items-center justify-content-end">
+                <i class="fa fa-user fs-3"></i><br>
+                <span class="text-light px-3">Admin</span>
+            </div>
         </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark p-3 pb-3">                 
+        <ul class="navbar-nav mx-auto">
+            <li><a href="#" class="nav-item nav-link active">Home</a></li>
+            <li><a href="Product.php" class="nav-item nav-link">Products</a></li>
+            <li><a href="Category.php" class="nav-item nav-link">Categories</a></li>
+        </ul>  
+    </nav><br>
+    
+    <div class="container-fluid bg-light">
+        <h3 class="text-center mt-3">Admin Dashboard</h3>   
+        <div class="row mt-3 m-3 p-3">            
+            <div class="col-lg-6">
+                <div class="mt-5 shadow-sm bg-white rounded mb-4 p-5"> 
+                    <div class="flex-fill pl-3 text-center">
+                        <h4>50</h4>   
+                        <h5 class="text-body">Products</h5>                            
+                    </div>            
+                </div>
+            </div> 
+            <div class="col-lg-6">
+                <div class="mt-5 shadow-sm bg-white rounded mb-4 p-5"> 
+                    <div class="flex-fill pl-3 text-center">
+                        <h4>12</h4>   
+                        <h5 class="text-body">Categories</h5>                            
+                    </div>            
+                </div>
+            </div>            
+        </div>    
     </div>
     
 </body>

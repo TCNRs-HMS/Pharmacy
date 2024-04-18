@@ -24,7 +24,7 @@
             <a class="text-decoration-none" href="">
                 <div class="cat-item d-flex align-items-center mb-4">
                     <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                        <img style="width: 100%;" src="<?php echo $image; ?>" alt="<?php echo $name; ?>">
+                        <img style="width: 100%;" src="http://localhost/Pharmacy-Website/images/<?php echo $row['Image'] ?>" alt="<?php echo $name; ?>">
                     </div>
                     <div class="flex-fill pl-3">
                         <h5><?php echo $name; ?></h5>

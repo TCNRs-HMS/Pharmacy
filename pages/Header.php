@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="pharmacy, medicine, tablets, pills, doctors, diseases, e-channelling">
     <meta name="description" content="This website helps people to buy medicines via online easily.">  
-    <link href="/styles/styles.css" rel="stylesheet">   
-    <link rel="stylesheet" type="text/css" href="/styles/styles.css">
+    <link rel="stylesheet" type="text/css" href="styles/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Oswald:wght@500;600;700&family=Pacifico&display=swap" rel="stylesheet"> 
@@ -21,9 +20,8 @@
                 <h1 class="text-uppercase text-light"><i class="fa fa-medkit text-light"></i>&nbsp;Calisto Medilab</h2>
             </div>
             <div class="col-lg-1 text-center">
-                <a href="Account.php">
                 <i class="fa fa-user fs-3"></i><br>
-                <span class="text-light">Account</span></a>
+                <span class="text-light">Account</span>
             </div>
             <div class="col-lg-1 text-center">
                 <i class="fa fa-shopping-cart fs-3"></i><br>
@@ -60,7 +58,7 @@
          </ul>        
         <div class="">
             <form>
-                <input type="text" placeholder="search">
+                <input type="text" placeholder="Search">
                 <button type="submit"><i class="fa fa-search"></i></button>
             </form>         
         </div>        
