@@ -70,7 +70,7 @@
                                 <td><?php echo $row['Price']; ?></td>
                                 <td><img src="http://localhost/Pharmacy-Website/images/Dental/<?php echo $row['Image']; ?>" style="width: 25%;" height="50px" alt=""><?php echo $row['Image']; ?></td>                                
                                 <td><a href="admin/Edit-Product.php?id=<?php echo $row['Id']; ?>" class="btn btn-success">Edit</a></td>
-                                <td><a href="#" class="btn btn-danger">Delete</a></td>
+                                <td><a href="admin/Delete-Product.php?id=<?php echo $row['Id']; ?>" class="btn btn-danger">Delete</a></td>
                             </tr>
                             <?php } ?>
                         </table>
