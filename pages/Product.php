@@ -1,12 +1,3 @@
-<?php
-
-    include("admin/Connect.php");
-
-    $query = "SELECT * FROM products";
-    $result = mysqli_query($conn, $query);
-       
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,6 +46,7 @@
                                 <td>ID</td>
                                 <td>Name</td>
                                 <td>Description</td>
+                                <td>Category</td>
                                 <td>Price</td>
                                 <td>Image</td>
                                 <td>Edit</td>
@@ -62,11 +54,17 @@
                             </tr>
                             <tr>
                             <?php 
+                                    include("admin/Connect.php");
+
+                                    $query = "SELECT * FROM products";
+                                    $result = mysqli_query($conn, $query);
+                                    
                                     while ($row = mysqli_fetch_assoc($result)) {                                    
                                 ?>
                                 <td><?php echo $row['Id']; ?></td>
                                 <td><?php echo $row['Name']; ?></td>
                                 <td><?php echo $row['Description']; ?></td>
+                                <td><?php echo $row['Category']; ?></td>
                                 <td><?php echo $row['Price']; ?></td>
                                 <td><img src="http://localhost/Pharmacy-Website/images/Dental/<?php echo $row['Image']; ?>" style="width: 25%;" height="50px" alt=""><?php echo $row['Image']; ?></td>                                
                                 <td><a href="admin/Edit-Product.php?id=<?php echo $row['Id']; ?>" class="btn btn-success">Edit</a></td>

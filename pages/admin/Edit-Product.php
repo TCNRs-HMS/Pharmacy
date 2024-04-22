@@ -4,12 +4,13 @@
     $id = "";
     $name = "";
     $description = "";
+    $category = "";
     $price = "";
     $filename = "";
 
-    if($_SERVER['REQUEST_METHOD']=='GET'){
-        if(!isset($_GET['id'])) {
-            header('location: Home.php');
+    if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+        if (!isset($_GET['id'])) {
+            header('location:../Product.php');
             exit;
         }
         $id = $_GET['id'];
@@ -17,38 +18,54 @@
         $result = $conn->query($sql);
         $row = $result->fetch_assoc();
         while (!$row) {
-            header('location: Home.php');
+            header('location:../Product.php');
             exit;
         }
         $id = $row['Id'];
         $name = $row['Name'];
         $description = $row['Description'];
+        $category = $row['Category'];
         $price = $row['Price'];
         $filename = $row['Image'];
-    }
-    else {
+    } else {
         $id = $_POST['id'];
         $name = $_POST['name'];
         $description = $_POST['description'];
+        $category = $_POST['category'];
         $price = $_POST['price'];
-        
-        if($_FILES["image"]["size"] > 0) {
+
+        // Check if a new image is uploaded
+        if ($_FILES["image"]["size"] > 0) {
             $filename = $_FILES["image"]["name"];
-            $tempname = $_FILES["image"]["tmp_name"];  
-            $folder = "images/".$filename;
-            
-            move_uploaded_file($tempname, $folder);
+            $tempname = $_FILES["image"]["tmp_name"];
+            $folder = "../../images/" . $category . "/";
+
+            // Move uploaded file to category folder
+            $destination = $folder . $filename;
+
+            // Check if the category folder exists, if not, create it
+            if (!is_dir($folder)) {
+                mkdir($folder, 0777, true); // 0777 permissions for full access, true for recursive creation
+            }
+
+            move_uploaded_file($tempname, $destination);
         }
 
-        $sql = "UPDATE products SET Name='$name', Description='$description', Price='$price'";
+        // Update the product details in the database
+        $sql = "UPDATE products SET Name='$name', Description='$description', Category='$category', Price='$price'";
 
-        if(isset($filename) && !empty($filename)) {
+        if (isset($filename) && !empty($filename)) {
             $sql .= ", Image='$filename'";
         }
         $sql .= " WHERE id='$id'";
         $result = $conn->query($sql);
+
+        header('location:../Product.php');
+
     }
 ?>
+
+
 
 <?php 
     include("Connect.php");
@@ -57,13 +74,14 @@
         $id = $_POST['id'];
         $name = $_POST['name'];
         $description = $_POST['description'];
+        $category = $_POST['category'];
         $price = $_POST['price'];
 
         $filename = $_FILES["image"]["name"];
         $tempname = $_FILES["image"]["tmp_name"];  
         $folder = "images/".$filename;   
 
-        $query = "INSERT INTO products (Id, Name, Description, Price, Image) VALUES ('$id', '$name', '$description', '$price', '$filename')";
+        $query = "INSERT INTO products (Id, Name, Description, Category, Price, Image) VALUES ('$id', '$name', '$description', '$category', '$price', '$filename')";
 
         if (move_uploaded_file($tempname, $folder)) {
             $msg = "Image uploaded successfully";
@@ -72,7 +90,7 @@
         }
 
         mysqli_query($conn, $query);
-        header('location: Admin.php');
+        header('location:../Product.php');
     } 
 ?>
 
@@ -112,6 +130,10 @@
                             <div class="form-group pb-2">
                                 <label class="form-label" for="description">Description</label>
                                 <input type="text" value="<?php echo $description; ?>" class="form-control" id="description" name="description" />
+                            </div>
+                            <div class="form-group pb-2">
+                                <label class="form-label" for="category">Category</label>
+                                <input type="text" value="<?php echo $category; ?>" class="form-control" id="category" name="category" />
                             </div>
                             <div class="form-group pb-2">
                                 <label class="form-label" for="price">Price</label>

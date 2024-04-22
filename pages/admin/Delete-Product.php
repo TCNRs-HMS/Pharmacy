@@ -6,5 +6,5 @@
         $sql = "DELETE FROM products WHERE Id = $id";
         $conn->query($sql);
     }
-    header('location:Product.php');
+    header('location:../Product.php');
 ?>

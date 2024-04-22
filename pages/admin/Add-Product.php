@@ -5,26 +5,31 @@
         $id = $_POST['id'];
         $name = $_POST['name'];
         $description = $_POST['description'];
+        $category = $_POST['category'];
         $price = $_POST['price'];
 
-        $filename = $_FILES["image"]["name"];
-        $tempname = $_FILES["image"]["tmp_name"];  
-        $folder = "images/".$filename;   
+        $filename = $_FILES['image']['name'];
+        $tempname = $_FILES['image']['tmp_name'];  
 
-        $query = "INSERT INTO products (Id, Name, Description, Price, Image) VALUES ('$id', '$name', '$description', '$price', '$filename')";
+        $folder = "../../images/".$category."/";
 
-        if (move_uploaded_file($tempname, $folder)) {
+        $destination = $folder . $filename;
+
+        if (!is_dir($folder)) {
+            mkdir($folder, 0777, true); 
+        }
+
+        $query = "INSERT INTO products (Id, Name, Description, Category, Price, Image) VALUES ('$id', '$name', '$description', '$category', '$price', '$filename')";
+
+        if (move_uploaded_file($tempname, $destination)) {
             $msg = "Image uploaded successfully";
         } else {
             $msg = "Failed to upload image";
         }
 
         mysqli_query($conn, $query);
-        // header('location: Home.php');
+        header('location:../Product.php');
     } 
-    // else {
-    //     echo 'Insertion failed!';
-    // }
 ?>
 
 
@@ -63,6 +68,10 @@
                             <div class="form-group pb-2">
                                 <label class="form-label" for="description">Description</label>
                                 <input type="text" class="form-control" id="description" name="description" />
+                            </div>
+                            <div class="form-group pb-2">
+                                <label class="form-label" for="category">Category</label>
+                                <input type="text" class="form-control" id="category" name="category" />
                             </div>
                             <div class="form-group pb-2">
                                 <label class="form-label" for="price">Price</label>
