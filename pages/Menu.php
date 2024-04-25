@@ -1,8 +1,8 @@
 <?php include("./Header.php") ?>
 
-<div class="container-fluid bg-light pt-5">
-    <h2 class="text-dark text-uppercase pr-3 text-center">Products</h2>
-    <div class="row px-xl-5 pb-3">  
+<div class="container-fluid bg-light pt-5 text-center">
+    <h2 class="text-dark text-uppercase pr-3 pb-3 text-center">Products</h2>
+    <div class="row mx-5 pb-3">  
 
         <?php
         include("admin/Connect.php");
@@ -20,16 +20,18 @@
             $image = $row['Image'];
         ?>
 
-        <div class="col-lg-3 col-md-4 col-sm-6 pb-1 pt-3 m-2 shadow-sm bg-white rounded">
+        <div class="col-lg-3 pb-5">
             <a class="text-decoration-none" href="">
-                <div class="cat-item d-flex align-items-center mb-4">
-                    <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                        <img style="width: 100%;" src="http://localhost/Pharmacy-Website/images/<?php echo $row['Image'] ?>" alt="<?php echo $name; ?>">
-                    </div>
-                    <div class="flex-fill pl-3">
-                        <h5><?php echo $name; ?></h5>
-                        <p><?php echo $description; ?></p>
-                        <p><strong>Price:</strong> $<?php echo $price; ?></p>
+                <div class="card shadow-sm bg-white rounded">                            
+                    <div class="card-body">
+                        <h4 class="card-title"><?php echo $name; ?></h4>
+                        <div class="overflow-hidden">
+                            <img style="width: 100%; height:100%; background-size:cover;" src="http://localhost/Pharmacy-Website/images/<?php echo $row['Category'] . '/' . $row['Image']; ?>" alt="<?php echo $name; ?>">                   
+                        </div>
+                        <div>
+                            <p><?php echo $description; ?></p>
+                            <p><strong><?php echo $price; ?></p></strong>                         
+                        </div>                    
                     </div>
                 </div>
             </a>
