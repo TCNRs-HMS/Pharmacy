@@ -30,7 +30,7 @@
         </div>
     </div>
 
-    <nav class="navbar navbar-expand-lg bg-dark navbar-dark p-3 pb-3">
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark p-3 pb-1">
         <ul class="navbar-nav me-auto me-lg-auto py-0">  
                 <li class="nav-item dropdown">
                     <a href="#" class="nav-link active dropdown-toggle" data-bs-toggle="dropdown">Categories</a>
@@ -62,6 +62,6 @@
                 <button type="submit"><i class="fa fa-search"></i></button>
             </form>         
         </div>        
-    </nav><br><br>
+    </nav>
 </body>
 </html>

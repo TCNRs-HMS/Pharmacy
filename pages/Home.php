@@ -81,24 +81,10 @@
                     $name = $row['Name'];
                     $description = $row['Description'];
                     $image = $row['Image'];
-            ?>        
-            <!-- <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-                <a class="text-decoration-none" href="#">
-                    <div class="cat-item d-flex align-items-center shadow-sm bg-white rounded mb-4" style="padding: 30px;">
-                        <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                            <img class="img-fluid" style="width: 100%;" src="http://localhost/Pharmacy-Website/images/Categories/<?php echo $row['Image'] ?>" alt="<?php echo $name; ?>"> 
-                        </div>
-                        
-                        <div class="flex-fill pl-3">
-                            <h6><?php echo $name; ?></h6>   
-                            <small class="text-body">100 Products</small>                            
-                        </div>
-                    </div>
-                </a>
-            </div>       -->
+            ?>      
             
-            <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-                <a class="text-decoration-none" href="#">
+            <div class="col-lg-3 col-md-6 col-sm-12 pb-1">                
+                <a class="text-decoration-none" href="Products.php?category=<?php echo $name; ?>">
                     <div class="shadow-sm bg-white rounded mb-4 p-2">
                         <div class="overflow-hidden" style="width: 100%; height: 150px;">
                             <img class="img-fluid rounded" style="width: 100%; height: 150px;" src="http://localhost/Pharmacy-Website/images/Categories/<?php echo $row['Image'] ?>" alt="<?php echo $name; ?>"> 

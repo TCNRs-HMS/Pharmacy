@@ -38,5 +38,7 @@
         </div>
 
         <?php } ?>
+    </div>
+</div>
         
 <?php include("./Footer.php") ?>
