@@ -1,3 +1,7 @@
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,7 +41,14 @@
             <div class="col-lg-6">
                 <div class="mt-5 shadow-sm bg-white rounded mb-4 p-5"> 
                     <div class="flex-fill pl-3 text-center">
-                        <h4>50</h4>   
+                        <?php
+                            include("admin/Connect.php");
+
+                            $query = "SELECT * FROM products";
+                            $products = mysqli_query($conn, $query);
+                            $rowCount = mysqli_num_rows($products);
+                        ?>
+                        <h4><?php echo $rowCount; ?></h4>   
                         <h5 class="text-body">Products</h5>                            
                     </div>            
                 </div>
@@ -45,7 +56,14 @@
             <div class="col-lg-6">
                 <div class="mt-5 shadow-sm bg-white rounded mb-4 p-5"> 
                     <div class="flex-fill pl-3 text-center">
-                        <h4>12</h4>   
+                        <?php
+                            include("admin/Connect.php");
+
+                            $query = "SELECT * FROM categories";
+                            $categories = mysqli_query($conn, $query);
+                            $rowCount = mysqli_num_rows($categories);
+                        ?>
+                        <h4><?php echo $rowCount; ?></h4>   
                         <h5 class="text-body">Categories</h5>                            
                     </div>            
                 </div>
