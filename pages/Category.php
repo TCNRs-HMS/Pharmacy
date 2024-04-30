@@ -34,9 +34,10 @@
 
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark p-3 pb-3">                 
         <ul class="navbar-nav mx-auto">
-            <li><a href="#" class="nav-item nav-link">Home</a></li>
+            <li><a href="Dashboard.php" class="nav-item nav-link">Home</a></li>
+            <li><a href="Admin.php" class="nav-item nav-link">Admins</a></li>
             <li><a href="Product.php" class="nav-item nav-link">Products</a></li>
-            <li><a href="Category.php" class="nav-item nav-link active">Categories</a></li>
+            <li><a href="#" class="nav-item nav-link active">Categories</a></li>
         </ul>  
     </nav><br>
     

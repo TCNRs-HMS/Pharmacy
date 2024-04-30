@@ -25,7 +25,7 @@
 
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark p-3 pb-3">                 
         <ul class="navbar-nav mx-auto">
-            <li><a href="#" class="nav-item nav-link">Home</a></li>
+            <li><a href="Dashboard.php" class="nav-item nav-link">Home</a></li>
             <li><a href="#" class="nav-item nav-link active">Admins</a></li>
             <li><a href="Product.php" class="nav-item nav-link">Products</a></li>
             <li><a href="Category.php" class="nav-item nav-link">Categories</a></li>
@@ -65,7 +65,7 @@
                                 <td><?php echo $row['Email']; ?></td>
                                 <td><?php echo $row['Password']; ?></td>                        
                                 <td><a href="admin/Edit-Product.php?id=<?php echo $row['Id']; ?>" class="btn btn-success">Edit</a></td>
-                                <td><a href="admin/Delete-Product.php?id=<?php echo $row['Id']; ?>" class="btn btn-danger">Delete</a></td>
+                                <td><a href="admin/Delete-Admin.php?id=<?php echo $row['Id']; ?>" class="btn btn-danger">Delete</a></td>
                             </tr>
                             <?php } ?>
                         </table>
