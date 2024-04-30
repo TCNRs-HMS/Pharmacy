@@ -7,7 +7,7 @@
         $email = $_POST['email'];
         $password = $_POST['password'];
 
-        $query = "SELECT * FROM login WHERE email='$email' AND password='$password'";
+        $query = "SELECT * FROM admins WHERE email='$email' AND password='$password'";
 
         $result = mysqli_query($conn, $query);
 
@@ -16,7 +16,7 @@
             $_SESSION['user_id'] = $row['id'];
             $_SESSION['username'] = $row['username'];
     
-            header('Location: home.php');
+            header('Location:../Dashboard.php');
             exit();
         } else {
             $error = "Invalid email or password!";

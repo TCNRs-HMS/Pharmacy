@@ -1,7 +1,3 @@
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,10 +8,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Oswald:wght@500;600;700&family=Pacifico&display=swap" rel="stylesheet"> 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-    <title>Admin Dashboard</title>
+    <title>Admin</title>
 </head>
 <body>
-    <div class="container-fluid bg-primary p-3">
+<div class="container-fluid bg-primary p-3">
         <div class="row px-3">
             <div class="col-lg-10 d-flex align-items-center justify-content-start">
                 <h1 class="text-uppercase text-light"><i class="fa fa-medkit text-light"></i>&nbsp;Calisto Medilab</h2>
@@ -29,46 +25,54 @@
 
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark p-3 pb-3">                 
         <ul class="navbar-nav mx-auto">
-            <li><a href="#" class="nav-item nav-link active">Home</a></li>
+            <li><a href="#" class="nav-item nav-link">Home</a></li>
+            <li><a href="#" class="nav-item nav-link active">Admins</a></li>
             <li><a href="Product.php" class="nav-item nav-link">Products</a></li>
             <li><a href="Category.php" class="nav-item nav-link">Categories</a></li>
         </ul>  
     </nav><br>
     
     <div class="container-fluid bg-light">
-        <h3 class="text-center mt-3">Admin Dashboard</h3>   
-        <div class="row mt-3 m-3 p-3">            
-            <div class="col-lg-6">
-                <div class="mt-5 shadow-sm bg-white rounded mb-4 p-5"> 
-                    <div class="flex-fill pl-3 text-center">
-                        <?php
-                            include("admin/Connect.php");
+        <h3 class="text-center mt-3">Admins</h3>   
+        <div class="row">            
+            <div class="col mx-4 px-4">
+                <a href="admin/Admin-Register.php" class="btn btn-primary">Add New Admin</a>
+                <div class="card mt-4">
+                    <div class="card-header bg-primary h4 text-light text-center">
+                        Admins
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-bordered text-center">
+                            <tr class="bg-dark text-white">
+                                <td>ID</td>
+                                <td>Username</td>
+                                <td>Email</td>
+                                <td>Password</td>
+                                <td>Edit</td>
+                                <td>Delete</td>
+                            </tr>
+                            <tr>
+                            <?php 
+                                    include("admin/Connect.php");
 
-                            $query = "SELECT * FROM products";
-                            $products = mysqli_query($conn, $query);
-                            $rowCount = mysqli_num_rows($products);
-                        ?>
-                        <h4><?php echo $rowCount; ?></h4>   
-                        <h5 class="text-body">Products</h5>                            
-                    </div>            
-                </div>
-            </div> 
-            <div class="col-lg-6">
-                <div class="mt-5 shadow-sm bg-white rounded mb-4 p-5"> 
-                    <div class="flex-fill pl-3 text-center">
-                        <?php
-                            include("admin/Connect.php");
-
-                            $query = "SELECT * FROM categories";
-                            $categories = mysqli_query($conn, $query);
-                            $rowCount = mysqli_num_rows($categories);
-                        ?>
-                        <h4><?php echo $rowCount; ?></h4>   
-                        <h5 class="text-body">Categories</h5>                            
-                    </div>            
+                                    $query = "SELECT * FROM admins";
+                                    $result = mysqli_query($conn, $query);
+                                    
+                                    while ($row = mysqli_fetch_assoc($result)) {                                    
+                                ?>
+                                <td><?php echo $row['Id']; ?></td>
+                                <td><?php echo $row['Username']; ?></td>
+                                <td><?php echo $row['Email']; ?></td>
+                                <td><?php echo $row['Password']; ?></td>                        
+                                <td><a href="admin/Edit-Product.php?id=<?php echo $row['Id']; ?>" class="btn btn-success">Edit</a></td>
+                                <td><a href="admin/Delete-Product.php?id=<?php echo $row['Id']; ?>" class="btn btn-danger">Delete</a></td>
+                            </tr>
+                            <?php } ?>
+                        </table>
+                    </div>
                 </div>
             </div>            
-        </div>    
+        </div>
     </div>
     
 </body>
