@@ -21,7 +21,7 @@
         ?>
 
         <div class="col-lg-3 pb-5">
-            <a class="text-decoration-none" href="">
+            <a class="text-decoration-none" href="Product-Details.php?name=<?php echo $name; ?>">
                 <div class="card shadow-sm bg-white rounded">                            
                     <div class="card-body">
                         <h4 class="card-title"><?php echo $name; ?></h4>
