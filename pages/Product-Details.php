@@ -28,7 +28,7 @@
             <?php
                 include("admin/Connect.php"); 
 
-                while ($row = mysqli_fetch_assoc($result)) {
+                if ($row = mysqli_fetch_assoc($result)) {
                     $id = $row['Id'];
                     $name = $row['Name'];
                     $description = $row['Description'];
@@ -41,46 +41,48 @@
                 </div>
             </div>
             <div class="col-lg-6 text-start">               
-                    <div class="card shadow-sm bg-white rounded p-4" style="width: 480px">
+                    <div class="card shadow-sm bg-white rounded p-4" style="width: 500px">
                         <div class="row mx-1">
-                            <div class="col-sm-12 text-start">
+                            <div class="col-sm-12 text-start pb-5">
                                 <h4 class="card-title"><?php echo $name; ?></h4>
-                                <p class="card-text"><?php echo $description; ?></p>  
-                                <div class="row mx-1 p-3">
-                                    <div class="col-sm-4 text-center card shadow-sm bg-white rounded">                              
-                                        <div class="d-flex align-items-center" style="justify-content: space-between;">
-                                            <div class="d-flex align-items-center ps-1" style="border-radius: 100%; cursor: pointer; background-color: lightgrey; width: 20px; height: 20px; font-size: 14px;">
-                                                <i class="fa fa-solid fa-minus"></i>
-                                            </div>
-                                            <h6 class="py-1 pt-2">1</h6> 
-                                            <div class="d-flex align-items-center ps-1" style="border-radius: 100%; cursor: pointer; background-color: lightgrey; width: 20px; height: 20px; font-size: 14px;">
-                                                <i class="fa fa-solid fa-plus"></i>
-                                            </div>
-                                        </div> 
-                                    </div>
-                                </div>
+                                <p class="card-text"><?php echo $description; ?></p> 
                             </div>
-                        </div>    
+                        </div>  
                         <div class="row mx-1">
-                            <div class="col-sm-6 text-start">
-                                <h6 class="card-text">Unit Price</h6>
-                                <h6 class="card-text">Quantity</h6>
-                                <h6 class="card-text">Discount</h6><br>
-                                <h5 class="card-text">Total Price</h5><br> 
+                            <div class="col-sm-6 text-center pe-5" style="justify-content: space-between;">
+                                <h5 class="card-text pe-5">Unit Price</h5>
                             </div>
-                            <div class="col-sm-6 text-end">
-                                <h6 class="card-text"><?php echo $price; ?></h6>
-                                <h6 class="card-text">1</h6>
-                                <h6 class="card-text">-</h6><br> 
-                                <h5 class="card-text"><?php echo $price; ?></h5><br> 
+                            <div class="col-sm-6 align-items-center text-center ps-5"> 
+                                <h5 class="card-text pb-3 ps-5" id="unitPrice"><?php echo $price; ?></h5>
+                            </div><hr>
+                        </div>
+                        <div class="row mx-auto">
+                            <div class="col-sm-12 mb-3 text-center card shadow-sm bg-white rounded">                              
+                                <div class="d-flex align-items-center mx-3 ps-1 pe-1" style="justify-content: space-between;">
+                                    <div class="d-flex align-items-center ps-1" style="border-radius: 100%; cursor: pointer; background-color: lightgrey; width: 20px; height: 20px; font-size: 14px;">
+                                        <i class="fa fa-solid fa-minus" onclick="updateQuantity('minus')"></i>
+                                    </div>
+                                    <h6 class="py-1 pt-2 px-4" id="amount">1</h6> 
+                                    <div class="d-flex align-items-center ps-1" style="border-radius: 100%; cursor: pointer; background-color: lightgrey; width: 20px; height: 20px; font-size: 14px;">
+                                        <i class="fa fa-solid fa-plus" onclick="updateQuantity('plus')"></i>
+                                    </div>
+                                </div> 
                             </div>
-                        </div> 
+                        </div>
+                        <div class="row mx-1"><hr>
+                            <div class="col-sm-6 text-center pe-5" style="justify-content: space-between;">
+                                <h5 class="card-text pe-5">Total Price</h5>
+                            </div>
+                            <div class="col-sm-6 align-items-center text-center ps-5"> 
+                                <h5 class="card-text pb-5 ps-5" id="totalPrice">115.00</h5>
+                            </div>
+                        </div>
                         <div class="row mx-1">
                             <div class="col-sm-6 d-flex align-items-center text-center">
-                                <a href="#" class="btn btn-primary" style="width: 100%">Add To Cart</a><br><br> 
+                                <a href="Cart.php?name=" class="btn btn-primary" style="width: 100%">Add To Cart</a><br><br> 
                             </div>
                             <div class="col-sm-6 d-flex align-items-center text-center"> 
-                                <a href="#" class="btn btn-primary" style="width: 100%">Purchase</a><br><br>  
+                                <a href="Checkout.php?name=" class="btn btn-primary" style="width: 100%">Purchase</a><br><br>  
                             </div>
                         </div>
                     </div>
@@ -90,10 +92,52 @@
         </div>
     </div>
 
+    <!-- <script type="text/javascript">
+        var quantity = 1;
+        
+        var price = parseFloat("<?php echo $price; ?>");
+
+        function updateQuantity(action) {
+            if (action=='minus' && quantity>1) {
+                quantity--;
+            }
+            else if (action=='plus') {
+                quantity++;
+            }
+            document.getElementById('amount').innerHTML = quantity;
+            document.getElementById('totalPrice').innerHTML = (quantity * price).toFixed(2); 
+        }
+        
+        updateQuantity();
+
+    </script> -->
+
+    <input type="hidden" id="priceValue" value="<?php echo $price; ?>">
+
+    <script type="text/javascript">
+
+        var quantity = 1;
+        var price = document.getElementById('priceValue').value;
+
+        function updateQuantity(action) {
+            if (action=='minus' && quantity>1) {
+                quantity--;
+            }
+            else if (action=='plus') {
+                quantity++;
+            }
+            document.getElementById('amount').innerHTML = quantity;
+            document.getElementById('totalPrice').innerHTML = (quantity * price).toFixed(2); 
+        }
+        
+        updateQuantity();
+        
+    </script>
+
 <?php
     } else {
-        // header('Location: home.php');
-        // exit();
+        header('Location: home.php');
+        exit();
     }
 
     include("./Footer.php") 
