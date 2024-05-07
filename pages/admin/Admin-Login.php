@@ -7,7 +7,7 @@
         $email = $_POST['email'];
         $password = $_POST['password'];
 
-        $query = "SELECT * FROM admins WHERE email='$email' AND password='$password'";
+        $query = "SELECT * FROM admins WHERE Email='$email' AND Password='$password'";
 
         $result = mysqli_query($conn, $query);
 

@@ -6,7 +6,7 @@
         $email = $_POST['email'];
         $password = $_POST['password'];
 
-        $query = "INSERT INTO admins (username, email, password) VALUES ('$username', '$email', '$password')";
+        $query = "INSERT INTO admins (Username, Email, Password) VALUES ('$username', '$email', '$password')";
 
         $result = mysqli_query($conn, $query);
         header('location:Admin-Login.php');

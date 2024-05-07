@@ -32,7 +32,7 @@
         if($_FILES["image"]["size"] > 0) {
             $filename = $_FILES["image"]["name"];
             $tempname = $_FILES["image"]["tmp_name"];  
-            $folder = "images/Categories/".$filename;
+            $folder = "../../images/Categories/".$filename;
             
             move_uploaded_file($tempname, $folder);
         }
@@ -57,7 +57,7 @@
         
         $filename = $_FILES['image']['name'];
         $tempname = $_FILES['image']['tmp_name'];  
-        $folder = "images/Categories/".$filename;  
+        $folder = "../../images/Categories/".$filename;  
 
         $query = "INSERT INTO categories (Id, Name, Description, Image) VALUES ('$id', '$name', '$description', '$filename')";
 

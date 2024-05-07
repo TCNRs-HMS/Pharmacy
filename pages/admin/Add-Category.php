@@ -8,7 +8,7 @@
         
         $filename = $_FILES['image']['name'];
         $tempname = $_FILES['image']['tmp_name'];  
-        $folder = "images/Categories/".$filename;  
+        $folder = "../../images/Categories/".$filename;  
 
         $query = "INSERT INTO categories (Id, Name, Description, Image) VALUES ('$id', '$name', '$description', '$filename')";
 
@@ -19,7 +19,7 @@
         }
 
         mysqli_query($conn, $query);
-        header('location:Home.php');
+        header('location:../Category.php');
     } 
 ?>
 
