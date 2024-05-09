@@ -82,7 +82,7 @@
                                 <a href="Cart.php?name=" class="btn btn-primary" style="width: 100%">Add To Cart</a><br><br> 
                             </div>
                             <div class="col-sm-6 d-flex align-items-center text-center"> 
-                                <a href="Checkout.php?name=" class="btn btn-primary" style="width: 100%">Purchase</a><br><br>  
+                                <a href="Checkout.php?name=<?php echo $name; ?>" class="btn btn-primary" style="width: 100%">Purchase</a><br><br>  
                             </div>
                         </div>
                     </div>
