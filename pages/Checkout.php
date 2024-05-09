@@ -10,6 +10,48 @@
         include("./Header.php")
 ?>
 
+<?php 
+    include("admin/Connect.php");
+
+    if(isset($_POST['submit'])) {
+        $name = $_POST['name'];
+        $cardNumber = $_POST['number'];
+        $expireDate = $_POST['date'];
+        $cvc = $_POST['cvc'];
+        $totalAmount = $_POST['total'];
+
+        $paymentData = json_decode($response, true);
+        if(isset($paymentData['state']) && $paymentData['state'] === 'approved') {
+
+            $orderStatus = "Paid";            
+            $orderId = $_SESSION['order_id']; 
+
+            $query = "INSERT INTO orders (name, number, date, cvv, method, total, status) VALUES ('$name', '$number', '$date', '$cvv', '$method', '$total', '$status')";
+            $stmt = mysqli_prepare($conn, $query);
+            mysqli_stmt_bind_param($stmt, "ssdss", $_POST['name'], $_POST['email'], $_POST['total'], $paymentMethod, $orderStatus);
+
+            $updateQuery = "UPDATE orders SET status = '$orderStatus' WHERE id = $orderId";
+            $updateResult = mysqli_query($conn, $updateQuery);
+
+            if(mysqli_stmt_execute($stmt)) {
+                $to = $_POST['email']; 
+                $subject = "Order Confirmation";
+                $message = "Thank you for your order!";
+                $headers = "From: your_email@example.com";
+
+                mail($to, $subject, $message, $headers);
+
+                header('Location: confirmation.php');
+                exit();
+            } else {
+                echo "Error updating order status: " . mysqli_error($conn);
+            }
+        } else {
+            echo "Payment failed. Please try again later.";
+        }
+    }
+?>
+
     <div class="container-fluid bg-dark pt-1"><hr class="text-light pt-3">
         <div class="row text-center">
             <div class="col-12">
@@ -47,7 +89,7 @@
                         </div>  
                         <div class="text-end pt-4 ps-5">
                             <h5 class="card-title"><?php echo $price; ?></h5> 
-                            <a class="card-text" href="#" style="text-decoration: none;">View Order</a> 
+                            <a class="card-text" href="Product-Details.php?name=<?php echo $name; ?>" style="text-decoration: none;">View Order</a> 
                         </div>   
                     </div>                           
                 </div>
@@ -60,29 +102,43 @@
                             <div class="card text-start">
                                 <div class="card-body">                                
                                     <form action="" method="post" enctype="multipart/form-data">
-                                        <div class="form-group pb-2">
-                                            <label class="form-label" for="method">Payment Method</label>
-                                            <input type="radio" class="form-control" id="method" name="method" />
-                                            <input type="radio" class="form-control" id="method" name="method" />
+                                        <div class="form-group row pb-2">
+                                            <label class="form-label" for="method">Payment Method</label><br>
+                                            <div class="form-check ms-2 col-lg-4">
+                                                <input type="radio" class="form-check-input" id="cards" name="method" checked/>
+                                                <label class="form-check-label" for="cards">Credit / Debit Card</label>
+                                            </div>
+                                            <div class="form-check col-lg-3">
+                                                <input type="radio" class="form-check-input" id="helapay" name="method"/>
+                                                <label class="form-check-label" for="helapay">Hela Pay</label>
+                                            </div>
+                                            <div class="pb-2 form-check col-lg-4">
+                                                <input type="radio" class="form-check-input" id="paypal" name="method"/>
+                                                <label class="form-check-label" for="paypal">Pay Pal</label>
+                                            </div>                                        
                                         </div>
                                         <div class="form-group pb-2">
                                             <label class="form-label" for="name">Cardholder's Name</label>
-                                            <input type="text" class="form-control" id="name" name="name" />
+                                            <input type="text" class="form-control" id="name" name="name" required />
                                         </div>
                                         <div class="form-group pb-2">
                                             <label class="form-label" for="number">Card Number</label>
-                                            <input type="text" class="form-control" id="number" name="number" />
+                                            <input type="text" class="form-control" id="number" name="number" maxlength="16" required />
                                         </div>
                                         <div class="form-group pb-2 d-flex">
                                             <div class="form-group pb-2 pe-5">
                                                 <label class="form-label" for="date">Expire Date</label>
-                                                <input type="text" class="form-control" id="date" name="date" />
+                                                <input type="text" class="form-control" id="date" name="date" maxlength="5" required />
                                             </div>
                                             <div class="form-group pb-2 ps-5">
                                                 <label class="form-label" for="cvc">CVC Number</label>
-                                                <input type="password" class="form-control" id="cvc" name="cvc" width="80%" />
+                                                <input type="text" class="form-control" id="cvc" name="cvc" width="80%" maxlength="3" required />
                                             </div>
-                                        </div>                           
+                                        </div>   
+                                        <div class="form-check mb-3">
+                                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                            <label class="form-check-label" for="exampleCheck1">Save the Details for Later</label>
+                                        </div>                        
                                         <!-- <button type="submit" class="btn btn-primary" name="submit" style="width: 100%;">Submit</button> -->
                                     </form>
                                 </div>
@@ -112,13 +168,13 @@
                                     </div><hr>
                                     <div class="row">
                                         <div class="col-sm-6 text-start" style="justify-content: space-between;">
-                                            <h6 class="card-text pe-5">Total</h6>
+                                            <h5 class="card-text pe-5">Total</h5>
                                         </div>
                                         <div class="col-sm-6 align-items-center text-center ps-5"> 
-                                            <h6 class="card-text" id="unitPrice"><?php echo $price; ?></h6>
+                                            <h5 class="card-text" id="unitPrice"><?php echo $price; ?></h5>
                                         </div> 
                                     </div><hr>                                                             
-                                    <button type="button" class="btn btn-primary" style="width: 100%;" onclick="myFunction()">Checkout</button>
+                                    <button type="submit" class="btn btn-primary" name="submit" style="width: 100%;">Checkout</button>
                                 </div>     
                             </div> 
                         </div>              
