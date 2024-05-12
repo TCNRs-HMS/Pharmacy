@@ -74,12 +74,12 @@
                                 <h5 class="card-text pe-5">Total Price</h5>
                             </div>
                             <div class="col-sm-6 align-items-center text-center ps-5"> 
-                                <h5 class="card-text pb-5 ps-5" id="totalPrice">115.00</h5>
+                                <h5 class="card-text pb-5 ps-5" id="totalPrice"><?php $price; ?></h5>
                             </div>
                         </div>
                         <div class="row mx-1">
                             <div class="col-sm-6 d-flex align-items-center text-center">
-                                <a href="Cart.php?name=" class="btn btn-primary" style="width: 100%">Add To Cart</a><br><br> 
+                                <a href="Cart.php?name=<?php echo $name; ?>" class="btn btn-primary" style="width: 100%">Add To Cart</a><br><br> 
                             </div>
                             <div class="col-sm-6 d-flex align-items-center text-center"> 
                                 <a href="Checkout.php?name=<?php echo $name; ?>" class="btn btn-primary" style="width: 100%">Purchase</a><br><br>  
