@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 include("admin/Connect.php");
 
 if (isset($_GET['name'])) {
@@ -86,14 +88,20 @@ if (isset($_GET['name'])) {
                     </div>
                 </div>
                 <div class="row mx-1 pt-4">
-                <div class="col-sm-6 d-flex align-items-center text-center">
-                    <form action="admin/Add-To-Cart.php" method="POST" style="width: 100%;">
-                        <input type="hidden" name="productId" value="<?php echo $id; ?>">
-                        <input type="hidden" name="quantity" class="cartQuantity" value="1">
-                        <input type="hidden" name="totalPrice" class="cartTotalPrice" value="<?php echo number_format($price, 2); ?>">
-                        <button type="submit" class="btn btn-primary" style="width: 100%;">Add To Cart</button>
-                    </form>
-                </div>
+                    <div class="col-sm-6 d-flex align-items-center text-center">
+                        <!-- <a href="admin/Add-To-Cart.php?name=<?php echo urlencode($name); ?>" class="btn btn-primary" style="width: 100%">Add To Cart</a> -->
+                        <form action="admin/Add-To-Cart.php?name=<?php echo urlencode($name); ?>" method="POST" style="width: 100%;">
+                            <input type="hidden" name="productId" value="<?php echo $id; ?>">
+                            <input type="hidden" name="name" value="<?php echo $name; ?>">
+                            <input type="hidden" name="description" value="<?php echo $description; ?>">
+                            <input type="hidden" name="image" value="<?php echo $image; ?>">
+                            <input type="hidden" name="quantity" class="cartQuantity" value="1">
+                            <input type="hidden" name="unitPrice" value="<?php echo number_format($price, 2); ?>">
+                            <input type="hidden" name="totalPrice" class="cartTotalPrice" value="<?php echo number_format($price, 2); ?>">
+                            <button type="submit" name="addToCart" class="btn btn-primary" style="width: 100%;">Add To Cart</button>
+                        </form>
+                        <br><br> 
+                    </div>
                     <div class="col-sm-6 d-flex align-items-center text-center">
                         <a href="Checkout.php?name=<?php echo urlencode($name); ?>" class="btn btn-primary" style="width: 100%">Purchase</a>
                         <br><br>  
@@ -110,6 +118,7 @@ if (isset($_GET['name'])) {
         function updateTotalPrice(unitPrice, quantity) {
             var totalPrice = unitPrice * quantity;
             $('#totalPrice').text(totalPrice.toFixed(2));
+            $('.cartTotalPrice').val(totalPrice.toFixed(2));
         }
 
         $('.increment').click(function() {
@@ -124,6 +133,7 @@ if (isset($_GET['name'])) {
                 $quantityElement.text(qtyVal);
                 updateQuantity(productId, qtyVal);
                 updateTotalPrice(unitPrice, qtyVal);
+                $('.cartQuantity').val(qtyVal);
             }
         });
 
@@ -139,6 +149,7 @@ if (isset($_GET['name'])) {
                 $quantityElement.text(qtyVal);
                 updateQuantity(productId, qtyVal);
                 updateTotalPrice(unitPrice, qtyVal);
+                $('.cartQuantity').val(qtyVal);
             }
         });
 
